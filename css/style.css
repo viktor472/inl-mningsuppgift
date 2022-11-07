@@ -1,0 +1,17 @@
+body {
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-box {
+  width: 90vh;
+}
+.center-box #nameLi,
+.center-box #numberLi {
+  width: 15vh;
+}/*# sourceMappingURL=style.css.map */
