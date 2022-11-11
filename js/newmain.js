@@ -40,18 +40,21 @@ createContackt.addEventListener("click", function (e) {
 
   modifyBtn.addEventListener("click", shangevalue);
   removeBtn.addEventListener("click", removelist);
- // removeitem.addEventListener("click", removelistitem);
+  removeitem.addEventListener("click", removelistitem);
 });
 
 
 
 //funktions
 
-//change the values so it is posible to eddit (done)
+//change the values so it is posible to eddit (ish done)
 function shangevalue (e){
   e.preventDefault();
   var x = document.getElementById("namevalue"); //isue nead to go from inside the spesifick form 
   var y = document.getElementById("numvalue"); //isue nead to go from inside the spesifick form 
+  //seleckt the first sibling then nstore in x
+  //seleckt the second sibling then nstore in y
+
   if (x .disabled) {
     x.removeAttribute("disabled", "");
     y.removeAttribute("disabled", "");
@@ -63,7 +66,6 @@ function shangevalue (e){
 
 }
 //delete sppesifick item (not done)
-
  function removelistitem(removeitem){
   removeitem.parentNode.remove();    //isue nead to understand
  }
@@ -77,6 +79,8 @@ function removelist (){
 
 
   //validate if the inputs are fild or not (Done)
+  //disables thew user from making the kontackt(not done)
+  //doesent write new 
 function validate (NameVal1, numberVal1){
   if (NameVal1 ==""){
     errorMesseges += 'namn saknas <br>';
