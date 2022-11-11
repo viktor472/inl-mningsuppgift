@@ -14,4 +14,12 @@ body {
 .center-box #nameLi,
 .center-box #numberLi {
   width: 15vh;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
 }/*# sourceMappingURL=style.css.map */
