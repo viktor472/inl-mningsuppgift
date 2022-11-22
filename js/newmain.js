@@ -15,67 +15,72 @@ createContackt.addEventListener("click", function (e) {
 //tacke in the othwer funktions and inplement thenm in the program (done)
 //fully funktional (nop)
   e.preventDefault();
-  var NameVal1 = nameVal.value;
-  var numVal1 = PhoneVal.value;
+  var name = nameVal.value;
+  var num = PhoneVal.value;
 
   //validate the inputs
-  validate (NameVal1,numVal1);
+  //validate ();
   //creating the listItem
-  let listItem = document.createElement("form");
+  let listItem = document.createElement("li")
+  let namevalue = document.createElement("input")
+  let numvalue = document.createElement("input")
+  let modifybtn = document.createElement("button")
+  let deletebtn = document.createElement("button")
   
-  //creating the listItems
-  listItem.innerHTML =`
-  <input id ="namevalue" value='${NameVal1}'  disabled>
-  <input id ="numvalue" value='${numVal1}' disabled>
-  <button id="modify">ändra</button>
-  <button id="radera">Radera</button>
+  namevalue.setAttribute("disabled", "");
+  numvalue.setAttribute("disabled", "");
+  
+  namevalue.value = name
+  numvalue.value = num
 
-  `;
+  modifybtn.innerHTML= "Ändra";
+  deletebtn.innerHTML= "Radera";
+
   ul.append(listItem);
+  listItem.append(namevalue, numvalue, modifybtn, deletebtn);
 
-  //implemented funktion
-  var modifyBtn = document.getElementById("modify")
-  var removeBtn = document.getElementById("removeAll")
-  var removeitem = document.getElementById("radera")
+  modifybtn.addEventListener("click", function(){
+    let parentelement = this.parentNode; 
+    if (namevalue.disabled) {
+      namevalue.removeAttribute("disabled", "");
+      numvalue.removeAttribute("disabled", "");
+      modifybtn.innerHTML= "Spara";
+    } 
+    else {
+      namevalue.setAttribute("disabled", "");
+      numvalue.setAttribute("disabled", "");
+      modifybtn.innerHTML= "Ändra";
+    }
+  
+  } );
 
-  modifyBtn.addEventListener("click", shangevalue);
-  removeBtn.addEventListener("click", removelist);
-  removeitem.addEventListener("click", removelistitem);
+  deletebtn.addEventListener("click", function(){
+    let parentelement = this.parentNode; 
+    parentelement.remove()
+  });
+
+  
+
+  //modifyBtn.addEventListener("click", shangevalue(namevalue, numvalue) );
+  //removeBtn.addEventListener("click", removelist);
+  //removeitem.addEventListener("click", removelistitem);
 });
-
-
 
 //funktions
 
-//change the values so it is posible to eddit (ish done)
-function shangevalue (e){
-  e.preventDefault();
-  var x = document.getElementById("namevalue"); //isue nead to go from inside the spesifick form 
-  var y = document.getElementById("numvalue"); //isue nead to go from inside the spesifick form 
-  //seleckt the first sibling then nstore in x
-  //seleckt the second sibling then nstore in y
+createContackt.addEventListener("click", function () {
+  nameVal.value = "";
+  PhoneVal.value = "";
+});
 
-  if (x .disabled) {
-    x.removeAttribute("disabled", "");
-    y.removeAttribute("disabled", "");
-  } 
-  else {
-    x.setAttribute("disabled", "");
-    y.setAttribute("disabled", "");
+
+var deletelist = document.getElementById("removeAll")
+deletelist.addEventListener("click", function(){
+  while (ul.hasChildNodes()){
+    ul.removeChild(ul.firstChild)
   }
+});
 
-}
-//delete sppesifick item (not done)
- function removelistitem(removeitem){
-  removeitem.parentNode.remove();    //isue nead to understand
- }
-
-
-//remove all items in contackts form (Done)
-function removelist (){
-  let children =  ul.childNodes;
-  children.remove();
-}
 
 
   //validate if the inputs are fild or not (Done)
